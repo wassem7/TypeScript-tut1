@@ -21,16 +21,42 @@ class Department {
   }
 }
 
+class AccoutingDepartment extends Department {
+  private lastReport: string;
+
+  get recentReport() {
+    if (this.lastReport) {
+      return this.lastReport;
+    }
+    throw new Error('No report found !');
+  }
+  constructor(id: string, private reports: string[]) {
+    super(id, 'Accouting');
+    this.lastReport = reports[0];
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+    this.lastReport = text;
+  }
+}
+
 class ITDepartment extends Department {
   admins: string[];
   constructor(id: string, admins: string[]) {
     super(id, 'IT DEPARTMENT');
     this.admins = admins;
   }
+
+  addEmployee(name: string) {
+    if (name === 'Wassem') {
+      return;
+    }
+  }
 }
 
-const accounting = new Department('ACC', 'Accouting');
-console.log(accounting);
+const accounting = new AccoutingDepartment('ACC', []);
+console.log(accounting.recentReport);
 
 accounting.addEmployee('Wassem');
 accounting.addEmployee('Kwame');
