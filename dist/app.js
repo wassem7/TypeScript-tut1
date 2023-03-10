@@ -15,13 +15,23 @@ class Department {
         console.log(this.employees.length);
         console.log(this.employees);
     }
+    static createEmployee(name) {
+        return { name: name };
+    }
 }
+Department.fiscalYear = 2024;
 class AccoutingDepartment extends Department {
     get recentReport() {
         if (this.lastReport) {
             return this.lastReport;
         }
         throw new Error('No report found !');
+    }
+    set report(value) {
+        if (!value) {
+            throw new Error('No value');
+        }
+        this.lastReport = value;
     }
     constructor(id, reports) {
         super(id, 'Accouting');
@@ -44,8 +54,5 @@ class ITDepartment extends Department {
         }
     }
 }
-const accounting = new AccoutingDepartment('ACC', []);
-console.log(accounting.recentReport);
-accounting.addEmployee('Wassem');
-accounting.addEmployee('Kwame');
-accounting.printEmployeeInformation();
+const employee1 = Department.createEmployee('Kwame');
+console.log(employee1, Department.fiscalYear);

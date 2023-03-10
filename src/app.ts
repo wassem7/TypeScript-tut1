@@ -1,5 +1,6 @@
 class Department {
   name: string;
+  static fiscalYear: number = 2024;
 
   private employees: string[] = [];
 
@@ -19,6 +20,10 @@ class Department {
     console.log(this.employees.length);
     console.log(this.employees);
   }
+
+  static createEmployee(name: string) {
+    return { name: name };
+  }
 }
 
 class AccoutingDepartment extends Department {
@@ -29,6 +34,13 @@ class AccoutingDepartment extends Department {
       return this.lastReport;
     }
     throw new Error('No report found !');
+  }
+
+  set report(value: string) {
+    if (!value) {
+      throw new Error('No value');
+    }
+    this.lastReport = value;
   }
   constructor(id: string, private reports: string[]) {
     super(id, 'Accouting');
@@ -55,12 +67,15 @@ class ITDepartment extends Department {
   }
 }
 
-const accounting = new AccoutingDepartment('ACC', []);
-console.log(accounting.recentReport);
+const employee1 = Department.createEmployee('Kwame');
+console.log(employee1, Department.fiscalYear);
 
-accounting.addEmployee('Wassem');
-accounting.addEmployee('Kwame');
-accounting.printEmployeeInformation();
+// const accounting = new AccoutingDepartment('ACC', []);
+// console.log(accounting.recentReport);
+
+// accounting.addEmployee('Wassem');
+// accounting.addEmployee('Kwame');
+// accounting.printEmployeeInformation();
 // const accountingCopy = {
 //   name: 'DUMMY',
 //   describe: accounting.describe,
