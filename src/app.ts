@@ -65,5 +65,34 @@ function printVehicle(vehicle: Vehicle) {
   }
 }
 
-printVehicle(v1);
-printVehicle(v2);
+// printVehicle(v1);
+// printVehicle(v2);
+
+interface Bird {
+  type: 'bird';
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: 'horse';
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function printSpeed(animal: Animal) {
+  let speed: number;
+  switch (animal.type) {
+    case 'bird':
+      speed = animal.flyingSpeed;
+      break;
+
+    case 'horse':
+      speed = animal.runningSpeed;
+      break;
+  }
+  console.log('Moving at speed ' + speed);
+}
+
+const b1: Bird = { type: 'bird', flyingSpeed: 200 };
+printSpeed(b1);
