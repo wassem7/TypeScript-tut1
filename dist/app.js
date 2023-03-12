@@ -1,13 +1,45 @@
 "use strict";
-let addnumbers;
-class Person {
-    constructor(name) {
-        this.name = name;
+const e1 = {
+    name: 'Wassem',
+    startDate: new Date(),
+    priviledges: ['create server'],
+};
+function add(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString();
     }
-    greet(phrase) {
-        console.log(phrase + ' ' + this.name);
+    return a + b;
+}
+function printEmployee(emp) {
+    console.log('Name ' + emp.name);
+    if ('priviledges' in emp) {
+        console.log('Privildges : ' + emp.priviledges);
+    }
+    if ('startDate' in emp) {
+        console.log('Start Date : ' + emp.startDate);
     }
 }
-let person1;
-person1 = new Person('Wassem');
-person1.greet('Good Afternoon');
+printEmployee(e1);
+class Car {
+    drive() {
+        console.log('Driving ...');
+    }
+}
+class Truck {
+    drive() {
+        console.log('Driving a truck ....');
+    }
+    loadCargo(amount) {
+        console.log('Loading Cargo ....' + amount);
+    }
+}
+const v1 = new Car();
+const v2 = new Truck();
+function printVehicle(vehicle) {
+    vehicle.drive();
+    if (vehicle instanceof Truck) {
+        vehicle.loadCargo(200);
+    }
+}
+printVehicle(v1);
+printVehicle(v2);

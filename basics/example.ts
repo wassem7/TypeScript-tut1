@@ -6,10 +6,9 @@ class AccountingDepartment {
   static getInstance(name: string, reports: string[]) {
     if (AccountingDepartment.instance) {
       return this.instance;
-    } else {
-      this.instance = new AccountingDepartment(name, reports);
-      return this.instance;
     }
+    this.instance = new AccountingDepartment(name, reports);
+    return this.instance;
   }
 }
 

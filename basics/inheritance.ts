@@ -49,12 +49,9 @@ class AccoutingDepartment extends Department {
   static getInstance() {
     if (AccoutingDepartment.instance) {
       return this.instance;
-    } else {
-      this.instance = new AccoutingDepartment('ACC', [
-        'Report 1',
-      ]);
-      return this.instance;
     }
+    this.instance = new AccoutingDepartment('ACC', ['Report 1']);
+    return this.instance;
   }
 
   addReport(text: string) {
