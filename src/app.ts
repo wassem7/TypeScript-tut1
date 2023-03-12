@@ -96,3 +96,35 @@ function printSpeed(animal: Animal) {
 
 const b1: Bird = { type: 'bird', flyingSpeed: 200 };
 printSpeed(b1);
+
+interface ErrorContainer {
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: 'wassemdarkwa@gmail.com',
+};
+
+function addnew(a: number, b: number): number;
+function addnew(a: string, b: string): string;
+function addnew(a: Combinable, b: Combinable) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+const fetchedUserData = {
+  id: 1,
+  name: 'Wassem Darkwa',
+  // job: {
+  //   title: 'Founder',
+  // },
+};
+
+const userInput = '';
+
+const u = userInput ?? 'DEFAULT';
+console.log(u);
+
+// console.log(fetchedUserData?.job.title);

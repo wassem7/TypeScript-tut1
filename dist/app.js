@@ -55,3 +55,19 @@ function printSpeed(animal) {
 }
 const b1 = { type: 'bird', flyingSpeed: 200 };
 printSpeed(b1);
+const errorBag = {
+    email: 'wassemdarkwa@gmail.com',
+};
+function addnew(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString();
+    }
+    return a + b;
+}
+const fetchedUserData = {
+    id: 1,
+    name: 'Wassem Darkwa',
+};
+const userInput = '';
+const u = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
+console.log(u);
