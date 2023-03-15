@@ -9,5 +9,14 @@ promise.then((data) => console.log(data));
 function merge(objA, objB) {
     return Object.assign(objA, objB);
 }
-const a = merge({ name: 'Wassem' }, 3);
-console.log(a);
+function CountandDescribe(element) {
+    let descriptionText = 'Got not text';
+    if (element.length === 1) {
+        descriptionText = 'Got a text';
+    }
+    else if (element.length > 1) {
+        descriptionText = 'Got some texts !';
+    }
+    return [element, descriptionText];
+}
+console.log(CountandDescribe('Wassem'));
