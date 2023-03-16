@@ -24,21 +24,30 @@ function merge<T extends Object, U extends Object>(
 // const a = merge({ name: 'Wassem' }, 3);
 // console.log(a);
 
-interface Lenghthy {
+interface lenghty {
   length: number;
 }
-function CountandDescribe<T extends Lenghthy>(
+function countandDescribe<T extends lenghty>(
   element: T
 ): [T, string] {
-  let descriptionText = 'Got not text';
+  let description = 'Got no texts !';
 
   if (element.length === 1) {
-    descriptionText = 'Got a text';
+    description = 'Got one text !';
   } else if (element.length > 1) {
-    descriptionText = 'Got some texts !';
+    description = 'Got some text !';
   }
 
-  return [element, descriptionText];
+  return [element, description];
 }
 
-console.log(CountandDescribe('Wassem'));
+console.log(countandDescribe('Wassem'));
+
+function extractandconvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
+  return obj[key];
+}
+
+console.log(extractandconvert({ age: 21 }, 'age'));

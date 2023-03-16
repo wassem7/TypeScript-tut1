@@ -9,14 +9,18 @@ promise.then((data) => console.log(data));
 function merge(objA, objB) {
     return Object.assign(objA, objB);
 }
-function CountandDescribe(element) {
-    let descriptionText = 'Got not text';
+function countandDescribe(element) {
+    let description = 'Got no texts !';
     if (element.length === 1) {
-        descriptionText = 'Got a text';
+        description = 'Got one text !';
     }
     else if (element.length > 1) {
-        descriptionText = 'Got some texts !';
+        description = 'Got some text !';
     }
-    return [element, descriptionText];
+    return [element, description];
 }
-console.log(CountandDescribe('Wassem'));
+console.log(countandDescribe('Wassem'));
+function extractandconvert(obj, key) {
+    return obj[key];
+}
+console.log(extractandconvert({ age: 21 }, 'age'));
