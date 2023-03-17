@@ -1,53 +1,41 @@
-const names: Array<string> = [];
+class DataStorage<T> {
+  private data: T[] = [];
 
-const promise: Promise<string> = new Promise(
-  (resolve, reject) => {
-    setTimeout(() => {
-      resolve('Working now !');
-    }, 2000);
-  }
-);
-
-promise.then((data) => console.log(data));
-
-function merge<T extends Object, U extends Object>(
-  objA: T,
-  objB: U
-) {
-  return Object.assign(objA, objB);
-}
-
-// console.log(
-//   merge({ name: 'Wassem' }, { networth: 'unlimited' })
-// );
-
-// const a = merge({ name: 'Wassem' }, 3);
-// console.log(a);
-
-interface lenghty {
-  length: number;
-}
-function countandDescribe<T extends lenghty>(
-  element: T
-): [T, string] {
-  let description = 'Got no texts !';
-
-  if (element.length === 1) {
-    description = 'Got one text !';
-  } else if (element.length > 1) {
-    description = 'Got some text !';
+  setData(value: T) {
+    this.data.push(value);
   }
 
-  return [element, description];
+  getData() {
+    return [...this.data];
+  }
+
+  removeData(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
 }
 
-console.log(countandDescribe('Wassem'));
+const datastore = new DataStorage<string>();
+datastore.setData('Wassem');
+datastore.setData('Darkwa');
+console.log(datastore.getData());
 
-function extractandconvert<T extends object, U extends keyof T>(
-  obj: T,
-  key: U
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeduntil: Date;
+}
+
+function createcoursegoal(
+  title: string,
+  description: string,
+  date: Date
 ) {
-  return obj[key];
+  let coursegoal: Partial<CourseGoal> = {};
+  coursegoal.title = title;
+  coursegoal.description = description;
+  coursegoal.completeduntil = date;
+
+  return coursegoal;
 }
 
-console.log(extractandconvert({ age: 21 }, 'age'));
+const names: Readonly<string[]> = ['Wassem', 'Darkwa'];

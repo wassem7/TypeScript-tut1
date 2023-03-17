@@ -1,26 +1,27 @@
 "use strict";
-const names = [];
-const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('Working now !');
-    }, 2000);
-});
-promise.then((data) => console.log(data));
-function merge(objA, objB) {
-    return Object.assign(objA, objB);
-}
-function countandDescribe(element) {
-    let description = 'Got no texts !';
-    if (element.length === 1) {
-        description = 'Got one text !';
+class DataStorage {
+    constructor() {
+        this.data = [];
     }
-    else if (element.length > 1) {
-        description = 'Got some text !';
+    setData(value) {
+        this.data.push(value);
     }
-    return [element, description];
+    getData() {
+        return [...this.data];
+    }
+    removeData(item) {
+        this.data.splice(this.data.indexOf(item), 1);
+    }
 }
-console.log(countandDescribe('Wassem'));
-function extractandconvert(obj, key) {
-    return obj[key];
+const datastore = new DataStorage();
+datastore.setData('Wassem');
+datastore.setData('Darkwa');
+console.log(datastore.getData());
+function createcoursegoal(title, description, date) {
+    let coursegoal = {};
+    coursegoal.title = title;
+    coursegoal.description = description;
+    coursegoal.completeduntil = date;
+    return coursegoal;
 }
-console.log(extractandconvert({ age: 21 }, 'age'));
+const names = ['Wassem', 'Darkwa'];
